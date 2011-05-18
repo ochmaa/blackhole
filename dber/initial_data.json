@@ -1,0 +1,40 @@
+[
+    {
+        "pk": 1, 
+        "model": 
+        "sms.telephoneoperator", 
+        "fields": 
+            {
+                "prefixes": "99,95",
+                "name": "Mobicom"
+            }
+    }, 
+    {
+        "pk": 2, 
+        "model": 
+        "sms.telephoneoperator", 
+        "fields": 
+            {
+                "prefixes": "88", 
+                "name": "Unitel"
+            }
+    }, 
+    {
+        "pk": 3, 
+        "model": "sms.telephoneoperator", 
+        "fields": 
+            {
+                "prefixes": "98,93", 
+                "name": "G-Mobile"
+            }
+    }, 
+    {
+        "pk": 4, 
+        "model": "sms.telephoneoperator", 
+        "fields": 
+            {
+                "prefixes": "91,96", 
+                "name": "Skytel"
+            }
+    }
+]

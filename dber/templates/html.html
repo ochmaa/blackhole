@@ -1,0 +1,10 @@
+<html>
+    <head>
+        <title>{% block title %}Empty title {% endblock %}</title>
+        {% include "css/blueprint_inclusion.html" %}
+    </head>
+    <body>
+            <a href="{% url home %}">Home</a>
+        {% block body %}<p>Welcome! </p> {% endblock %}
+    </body>
+</html>
