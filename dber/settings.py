@@ -11,6 +11,7 @@ LOGIN_REDIRECT_URL = '/'
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+AUTH_PROFILE_MODULE = 'sms.AppUser'
 
 MANAGERS = ADMINS
 

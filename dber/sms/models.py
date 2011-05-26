@@ -1,14 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class TelephoneOperator(models.Model):
-    name  = models.CharField(max_length=200)
-    prefixes = models.CharField(max_length=255)
-    tarif = models.IntegerField()
-    
-    def __unicode__(self):
-        return self.name
-
 class Plan(models.Model):
     name = models.CharField(max_length=200)
     tarif = models.IntegerField()
@@ -20,10 +12,26 @@ class Plan(models.Model):
     def __unicode__(self):
         return self.name
 
-class AppUser(User):
+class AppUser(models.Model):
+    user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     remcash = models.IntegerField(default=15000)
     inbox_count = models.IntegerField(default=1000)
+
+    def RM(self):
+        return self.userinbox_set.count()
+        
+    def UNR(self):
+        return self.userinbox_set.filter(message__unread=True).count()
+
+    def SM(self):
+        return self.useroutbox_set.count()
+
+    def USM(self):
+        return self.useroutbox_set.filter(message__unread=True).count()
+        
+    def __unicode__(self):
+        return self.user.username
 
     def virgin(self):
         self.remcash = self.plan.tarif
@@ -51,6 +59,14 @@ class AppUser(User):
         self.inbox_count = self.inbox_count -1
         self.save()
 
+class TelephoneOperator(models.Model):
+    name  = models.CharField(max_length=200)
+    prefixes = models.CharField(max_length=255)
+    tarif = models.IntegerField()
+    
+    def __unicode__(self):
+        return self.name
+
 class Rule(models.Model):
     keyword = models.CharField(max_length=20)
     redirect_url = models.URLField()
@@ -63,7 +79,7 @@ class Message(models.Model):
     phone = models.CharField(max_length=20)
     content = models.CharField(max_length=150)
     ognoo = models.DateTimeField(auto_now=True)
-    unread = models.BooleanField(default=False)
+    unread = models.BooleanField(default=True)
     
 class UserInbox(models.Model):
     user = models.ForeignKey(AppUser)
@@ -75,7 +91,6 @@ class UserInbox(models.Model):
         else:
             super(UserInbox,self).save(*args,**kwargs)            
             self.user.decrement_inbox()
-
             
 class UserOutbox(models.Model):
     user = models.ForeignKey(AppUser)

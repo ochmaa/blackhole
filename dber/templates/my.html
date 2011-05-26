@@ -41,7 +41,7 @@
                     <ul class="usernav">
                         <li>
                             <a href="#">Cash</a>
-                            <a href="#" class="unread_count ">0</a>
+                            <a href="#" class="unread_count ">{{user.get_profile.remcash}}</a>
                         </li>
                         <li><a href="#">Account Settings</a></li>
                         <li><a href="#">Log Out</a></li>
@@ -83,22 +83,22 @@
                     </li>
                     <li class="usage limit-repos">
                         <dl class="over">
-                            <dt class="numbers"><em>0</em>/10</dt>
+                            <dt class="numbers"><em>{{user.get_profile.UNR}}</em>/{{user.get_profile.RM}}</dt>
                             <dt class="label">Recieved Messages</dt>
                             <dd class="bar"><span style="width:100.0%">100.0%</span></dd>
                         </dl>
                     </li>
                     <li class="usage limit-collabs">
                         <dl class="over">
-                            <dt class="numbers"><em>0</em>/1</dt>
+                            <dt class="numbers"><em>{{ user.get_profile.USM}}</em>/{{ user.get_profile.SM}}</dt>
                             <dt class="label">Sent Messages</dt>
                             <dd class="bar"><span style="width:100.0%">100.0%</span></dd>
                         </dl>
                     </li>
                     <li class="usage limit-space">
                         <dl class="below">
-                            <dt class="numbers"><em>0.00<span class="suffix">GB</span></em>/0.30<span class="suffix">GB</span></dt>
-                            <dt class="label">Disk Space (soft limit)</dt>
+                            <dt class="numbers"><em>{{user.get_profile.remcash}}<span class="suffix">₮</span></em>/{{user.get_profile.plan.tarif}}<span class="suffix">₮</span></dt>
+                            <dt class="label">таны данс</dt>
                             <dd class="bar"><span style="width:2.67410278320312%">2.67410278320312%</span></dd>
                         </dl>
                     </li>
