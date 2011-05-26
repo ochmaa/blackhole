@@ -28,18 +28,14 @@ class Reciever(Resource):
         to=to[0]
         to = to[-8:]
         firstword  = content[0].split(' ')[0]
-        a = Program.objects.all()
-        for program in Program.objects.all():
-            if firstword in program.keyword.split(','):
-                notificationurl = 'http://%s/%s'%(program.ip,program.url)
-                print 'not url is ',notificationurl
-                notificationurl = notificationurl%(to,content[0])
-                print 'complete notification url is', notificationurl
-                urllib.urlopen(notificationurl)
-        Inbox.objects.create(phone=to, recievedate = datetime.datetime.now(), is_processed=True)
-        if to!='88253141':
-            template  = template_env.get_template('index.html')
-            return template.render().encode('utf-8')
+        msgObj=Message.objects.create(phone=to, content=content[0])
+        for rule in Rule.objects.all():
+            if firstword==rule.keyword:
+                UserInbox.objects.create(user=rule.user,message=msgObj)
+                #message.g huleen awlaa gej message ywuulj bga uchir neg message ywuulsan gj tootson nemeduulne
+                rule.user.send_message_increment(to,'tanii message.g huleen awlaa bayrlalaa')
+                template  = template_env.get_template('index.html')
+                return template.render().encode('utf-8')
 
 class Process(Resource):
     isLeaf = True

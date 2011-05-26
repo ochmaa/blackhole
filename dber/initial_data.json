@@ -1,40 +1,9 @@
 [
-    {
-        "pk": 1, 
-        "model": 
-        "sms.telephoneoperator", 
-        "fields": 
-            {
-                "prefixes": "99,95",
-                "name": "Mobicom"
-            }
-    }, 
-    {
-        "pk": 2, 
-        "model": 
-        "sms.telephoneoperator", 
-        "fields": 
-            {
-                "prefixes": "88", 
-                "name": "Unitel"
-            }
-    }, 
-    {
-        "pk": 3, 
-        "model": "sms.telephoneoperator", 
-        "fields": 
-            {
-                "prefixes": "98,93", 
-                "name": "G-Mobile"
-            }
-    }, 
-    {
-        "pk": 4, 
-        "model": "sms.telephoneoperator", 
-        "fields": 
-            {
-                "prefixes": "91,96", 
-                "name": "Skytel"
-            }
-    }
+    {"pk": 1, "model": "sms.telephoneoperator", "fields": {"prefixes": "99,95", "tarif": 20, "name": "Mobicom"}}, 
+    {"pk": 2, "model": "sms.telephoneoperator", "fields": {"prefixes": "88", "tarif": 14, "name": "Unitel"}}, 
+    {"pk": 3, "model": "sms.telephoneoperator", "fields": {"prefixes": "93,98", "tarif": 25, "name": "G-Mobile"}}, 
+    {"pk": 4, "model": "sms.telephoneoperator", "fields": {"prefixes": "91,96", "tarif": 25, "name": "Skytel"}},
+    {"pk": 1, "model": "sms.plan", "fields": {"tarif": 15000, "name": "Silver", "inbox_count": 1000}}, 
+    {"pk": 2, "model": "sms.plan", "fields": {"tarif": 25000, "name": "Gold", "inbox_count": 2000}}, 
+    {"pk": 3, "model": "sms.plan", "fields": {"tarif": 50000, "name": "Platinum", "inbox_count": -1}}
 ]

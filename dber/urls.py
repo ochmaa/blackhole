@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'^outbox$','dber.sms.views.outbox', name='outbox'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login-page', kwargs = { 'template_name' : 'login.html', }),
+    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout-page'),
     # url(r'^dber/', include('dber.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

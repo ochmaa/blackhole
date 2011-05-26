@@ -1,0 +1,553 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Your Account - GitHub</title>
+        <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+
+        <link href="/static/css/bundle_github.css" media="screen" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
+          if (typeof console == "undefined" || typeof console.log == "undefined")
+            console = { log: function() {} }
+        </script>
+        <script type="text/javascript" charset="utf-8">
+          var GitHub = {
+            assetHost: 'https://d3nwyuy0nl342s.cloudfront.net'
+          }
+          var github_user = 'user:{{request.user.user_name}}'
+        </script>
+        <script src="/static/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+        <script src="/statis/js/bundle_github.js" type="text/javascript"></script>
+        <script type="text/javascript" charset="utf-8">
+          GitHub.spy({
+            repo: ""
+          })
+        </script>
+    </head>
+    <body class="logged_in page-account  linux env-production usingMouse">
+        <div class="" id="main">
+            <div id="header" class="true">
+                <a class="logo boring" href="#">
+                    <img alt="github" class="default" src="/static/images/logov3.png">
+                    <!--[if (gt IE 8)|!(IE)]><!-->
+                    <img alt="github" class="hover" src="/static/images/logov3-hover.png">
+                    <!--<![endif]-->
+                </a>
+                <div class="userbox">
+                    <div class="avatarname">
+                        <a href="#"><img src="/static/images/62bd07ef6619f5fafef91e6c2fddbaf3" alt="" width="20" height="20"></a>
+                        <a href="#" class="name">{{user.username}}</a>
+                    </div>
+                    <ul class="usernav">
+                        <li>
+                            <a href="#">Cash</a>
+                            <a href="#" class="unread_count ">0</a>
+                        </li>
+                        <li><a href="#">Account Settings</a></li>
+                        <li><a href="#">Log Out</a></li>
+                    </ul>
+                </div><!-- /.userbox -->
+                <div class="topsearch"> 
+                    <form action="#" id="top_search_form" method="get">
+                        <a href="#" class="advanced-search tooltipped downwards" title="Advanced Search">Advanced Search</a>
+                        <input type="search" class="search my_repos_autocompleter placeholder ac_input" name="q" results="5" placeholder="Search…" autocomplete="off"> <input type="submit" value="Search" class="button">
+                        <input type="hidden" name="type" value="Everything">
+                        <input type="hidden" name="repo" value="">
+                        <input type="hidden" name="langOverride" value="">
+                        <input type="hidden" name="start_value" value="1">
+                    </form>
+                </div>
+            </div>
+            <div class="site"> 
+                <div class="pagehead mine">
+                    <h1>Account Settings</h1>
+                    <ul class="actions">
+                        <li><a href="#" class="minibutton"><span>View Your Public Profile→</span></a></li>
+                    </ul>
+                    <ul class="tabs">
+                        <li><a href="#" class="selected">Home</a></li>
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">Plans &amp; Billing</a></li>
+                        <li><a href="#">Statistics</a></li>
+                        <li><a href="#" highlight="organizations">Reports</a></li> 
+                    </ul>
+                </div><!-- /.pagehead -->
+                <div class="flash-messages"></div>
+                <ul class="usagebars usagestats">
+                    <li class="name">
+                        <dl>
+                            <dt class="numbers"><em>Free</em></dt>
+                            <dt class="label">free </dt>
+                            <dd><a href="#" class="minibutton "><span>Change plan</span></a></dd>
+                        </dl>
+                    </li>
+                    <li class="usage limit-repos">
+                        <dl class="over">
+                            <dt class="numbers"><em>0</em>/10</dt>
+                            <dt class="label">Recieved Messages</dt>
+                            <dd class="bar"><span style="width:100.0%">100.0%</span></dd>
+                        </dl>
+                    </li>
+                    <li class="usage limit-collabs">
+                        <dl class="over">
+                            <dt class="numbers"><em>0</em>/1</dt>
+                            <dt class="label">Sent Messages</dt>
+                            <dd class="bar"><span style="width:100.0%">100.0%</span></dd>
+                        </dl>
+                    </li>
+                    <li class="usage limit-space">
+                        <dl class="below">
+                            <dt class="numbers"><em>0.00<span class="suffix">GB</span></em>/0.30<span class="suffix">GB</span></dt>
+                            <dt class="label">Disk Space (soft limit)</dt>
+                            <dd class="bar"><span style="width:2.67410278320312%">2.67410278320312%</span></dd>
+                        </dl>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+                <div class="htabs">
+                <ul class="js-hard-tabs sidetabs">
+                    <li><a href="#" class="" data-container-id="profile_bucket">My Profile</a></li>
+                    <li><a href="#" class="selected" data-container-id="admin_bucket">Phone numbers</a></li>
+                    <li><a href="#" class="" data-container-id="email_bucket">Keys</a></li>
+                    <li><a href="#" class="" data-container-id="ssh_bucket">Rules</a></li>
+                    <li><a href="#" class="" data-container-id="job_bucket">Redirect url</a></li>      
+                </ul>
+                <div id="job_bucket" class="tab-content" style="display: none; ">
+                    <div class="columns typical">
+                        <div class="column main">
+                            <div class="fieldgroup">
+                                <form action="https://github.com/users/mongolzaluu" class="edit_user" id="edit_user_790536" method="post">
+                                    <div style="margin:0;padding:0">
+                                        <input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="ea08705969868866d2014801718bc82406a3ee4e">
+                                    </div>
+                                    <div class="fields">
+                                        <dl class="form">
+                                            <dt><label>Professional Bio</label> <span style="font-weight:normal; font-size:0.8em; float:right;">Parsed with <a href="#">GitHub Flavored Markdown</a></span></dt>
+                                            <dd>
+                                                <textarea cols="40" id="user_profile_bio" name="user[profile_bio]" rows="20"></textarea>
+                                            </dd>
+                                        </dl>
+                                        <p class="checkbox">
+                                            <input id="user_profile_hireable" name="user[profile_hireable]" type="checkbox" value="1"><input name="user[profile_hireable]" type="hidden" value="0">
+                                            <label for="user_profile_hireable">Available for hire</label>
+                                        </p>
+                                        <div class="rule"></div>
+                                        <div class="form-actions">
+                                            <button type="button" class="classy js-preview-job-profile"><span>Preview</span></button>
+                                            <button type="submit" class="classy"><span>Update Job Profile</span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.column.main -->
+                        <div class="column sidebar">
+                            <p class="explain"><strong>Looking for work? Let GitHub help!</strong> Fill out your profile, paste in your resume below, check the for hire box and we'll try and hook you up with a new job.</p>
+                        </div><!-- /.column.sidebar -->
+                    </div><!-- /.columns.typical -->
+                </div><!-- /#job_bucket -->
+                <div id="email_bucket" class="tab-content" style="display: none; ">
+                    <div class="columns typical">
+                        <div class="column main">
+                            <div class="fieldgroup">
+                                <div class="fields">
+                                    <ul class="fieldpills usernames user_emails">
+                                        <li class="email">
+                                            <img src="/static/images/62bd07ef6619f5fafef91e6c2fddbaf3" alt="" width="20" height="20">
+                                            <span class="address">ezerdenezul@yahoo.com</span> 
+                                            <a href="#" class="delete_email remove action">(delete)</a>
+                                        </li>
+                                    </ul>
+                                    <p class="addlink" id="add_email_action"><a href="#">Add another email address</a></p>
+                                    <div class="add-pill-form add-emails-form" id="add_email_form_wrap" style="display:none;">
+                                        <form action="https://github.com/users/mongolzaluu/add_email" id="add_email_form" method="post">
+                                            <div style="margin:0;padding:0">
+                                                <input name="authenticity_token" type="hidden" value="ea08705969868866d2014801718bc82406a3ee4e">
+                                            </div>
+                                            <input name="email" type="text" class="textfield">
+                                            <button type="submit" class="minibutton">
+                                                <span>Add</span>
+                                            </button> or <a href="#" class="action" id="cancel_add_email">cancel</a>
+                                        </form>
+                                        <!-- cancel hides form and shows link; add insert email and keep form available for rapid fire additions -->
+                                        <p class="error_box" style="display:none;">That email address is already in use.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.column.main -->
+                        <div class="column sidebar">
+                            <p class="explain">We use these to identify your commits on GitHub.
+                            <a href="#" target="_blank">Learn how to setup Git with your email address.</a></p>
+                            <p class="explain">Avatars come from <a href="#" target="_blank">gravatar.com</a> and must be G rated.</p>
+                        </div><!-- /.column.sidebar -->
+                    </div><!-- /.columns.typical -->
+                </div><!-- /#email_bucket -->
+                <div id="ssh_bucket" class="tab-content" style="display: none; ">
+                    <div class="columns typical">
+                        <div class="column main">
+                            <div class="fieldgroup">
+                                <div class="fields">
+                                    <ul class="fieldpills public_keys">
+                                        <li id="key_804876" class="key">my
+                                            <a href="#" class="edit_key_action">(edit)</a>
+                                            <a href="#" class="delete_key remove action">(delete)</a>
+                                        </li>
+                                    </ul>
+                                    <p id="add_key_action" class="addlink" style="display: none; "><a href="https://github.com/account/admin#">Add another public key</a></p>
+                                    <div id="new_key_form_wrap" class="add-pill-form add-keys-form" style="">
+                                        <form action="#" class="key_editing" id="new_key" method="post">
+                                            <div style="margin:0;padding:0">
+                                                <input name="authenticity_token" type="hidden" value="ea08705969868866d2014801718bc82406a3ee4e">
+                                            </div>
+                                            <dl class="form">
+                                                <dt><label>Title</label></dt>
+                                                <dd><input id="public_key_title" name="public_key[title]" size="30" type="text"></dd>
+                                            </dl>
+                                            <dl class="form">
+                                                <dt><label>Key</label></dt>
+                                                <dd><textarea class="key_value" cols="40" id="public_key_key" name="public_key[key]" rows="20"></textarea></dd>
+                                            </dl>
+                                            <div class="form-actions">
+                                                <button type="submit" class="minibutton"><span>Add key</span></button>
+                                                or <a href="#" id="cancel_add_key" class="action">cancel</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="rule"></div>
+                                    <p class="extra">Our RSA fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48</p>
+                                </div>
+                            </div>
+                        </div><!-- /.column.main -->
+                        <div class="sidebar">
+                            <p class="explain">We use these to give you access to your git repositories.
+                            <a target="_blank" href="#">Need help with public keys?</a></p>
+                        </div>
+                    </div><!-- /.columns.typical -->
+                </div><!-- /#ssh_bucket -->
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="clearfix">
+      <div class="site">
+        <div class="sponsor">
+          <a href="#" class="logo">
+            <img alt="Dedicated Server" height="36" src="/static/images/rackspace_logo.png" width="38">
+          </a>
+          Powered by the <a href="#">Dedicated
+          Servers</a> and<br> <a href="#">Cloud
+          Computing</a> of Rackspace Hosting<span>®</span>
+        </div>
+
+        <ul class="sosueme">
+          <li class="main">© 2011 <span id="_rrt" title="0.05906s from fe6.rs.github.com">GitHub</span> Inc. All rights reserved.</li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div><!-- /#footer -->
+
+    <script>window._auth_token = "ea08705969868866d2014801718bc82406a3ee4e"</script>
+    
+
+<div id="keyboard_shortcuts_pane" class="instapaper_ignore readability-extra" style="display:none">
+  <h2>Keyboard Shortcuts <small><a href="#" class="js-see-all-keyboard-shortcuts">(see all)</a></small></h2>
+
+  <div class="columns threecols">
+    <div class="column first">
+      <h3>Site wide shortcuts</h3>
+      <dl class="keyboard-mappings">
+        <dt>s</dt>
+        <dd>Focus site search</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>?</dt>
+        <dd>Bring up this help dialog</dd>
+      </dl>
+    </div><!-- /.column.first -->
+
+    <div class="column middle" style="display:none">
+      <h3>Commit list</h3>
+      <dl class="keyboard-mappings">
+        <dt>j</dt>
+        <dd>Move selected down</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>k</dt>
+        <dd>Move selected up</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>t</dt>
+        <dd>Open tree</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>p</dt>
+        <dd>Open parent</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>c <em>or</em> o <em>or</em> enter</dt>
+        <dd>Open commit</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>y</dt>
+        <dd>Expand URL to its canonical form</dd>
+      </dl>
+    </div><!-- /.column.first -->
+
+    <div class="column last" style="display:none">
+      <h3>Pull request list</h3>
+      <dl class="keyboard-mappings">
+        <dt>j</dt>
+        <dd>Move selected down</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>k</dt>
+        <dd>Move selected up</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>o <em>or</em> enter</dt>
+        <dd>Open issue</dd>
+      </dl>
+    </div><!-- /.columns.last -->
+
+  </div><!-- /.columns.equacols -->
+
+  <div style="display:none">
+    <div class="rule"></div>
+
+    <h3>Issues</h3>
+
+    <div class="columns threecols">
+      <div class="column first">
+        <dl class="keyboard-mappings">
+          <dt>j</dt>
+          <dd>Move selected down</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>k</dt>
+          <dd>Move selected up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>x</dt>
+          <dd>Toggle select target</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>o <em>or</em> enter</dt>
+          <dd>Open issue</dd>
+        </dl>
+      </div><!-- /.column.first -->
+      <div class="column middle">
+        <dl class="keyboard-mappings">
+          <dt>I</dt>
+          <dd>Mark selected as read</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>U</dt>
+          <dd>Mark selected as unread</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>e</dt>
+          <dd>Close selected</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>y</dt>
+          <dd>Remove selected from view</dd>
+        </dl>
+      </div><!-- /.column.middle -->
+      <div class="column last">
+        <dl class="keyboard-mappings">
+          <dt>c</dt>
+          <dd>Create issue</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>l</dt>
+          <dd>Create label</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>i</dt>
+          <dd>Back to inbox</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>u</dt>
+          <dd>Back to issues</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>/</dt>
+          <dd>Focus issues search</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:none">
+    <div class="rule"></div>
+
+    <h3>Network Graph</h3>
+    <div class="columns equacols">
+      <div class="column first">
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">←</span> <em>or</em> h</dt>
+          <dd>Scroll left</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">→</span> <em>or</em> l</dt>
+          <dd>Scroll right</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">↑</span> <em>or</em> k</dt>
+          <dd>Scroll up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">↓</span> <em>or</em> j</dt>
+          <dd>Scroll down</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>t</dt>
+          <dd>Toggle visibility of head labels</dd>
+        </dl>
+      </div><!-- /.column.first -->
+      <div class="column last">
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">←</span> <em>or</em> shift h</dt>
+          <dd>Scroll all the way left</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">→</span> <em>or</em> shift l</dt>
+          <dd>Scroll all the way right</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">↑</span> <em>or</em> shift k</dt>
+          <dd>Scroll all the way up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">↓</span> <em>or</em> shift j</dt>
+          <dd>Scroll all the way down</dd>
+        </dl>
+      </div><!-- /.column.last -->
+    </div>
+  </div>
+
+  <div style="display:none">
+    <div class="rule"></div>
+    <div class="columns threecols">
+      <div class="column first" style="display:none">
+        <h3>Source Code Browsing</h3>
+        <dl class="keyboard-mappings">
+          <dt>t</dt>
+          <dd>Activates the file finder</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>l</dt>
+          <dd>Jump to line</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>y</dt>
+          <dd>Expand URL to its canonical form</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div id="markdown-help" class="instapaper_ignore readability-extra">
+  <h2>Markdown Cheat Sheet</h2>
+
+  <div class="cheatsheet-content">
+
+  <div class="mod">
+    <div class="col">
+      <h3>Format Text</h3>
+      <p>Headers</p>
+      <pre># This is an &lt;h1&gt; tag
+## This is an &lt;h2&gt; tag
+###### This is an &lt;h6&gt; tag</pre>
+     <p>Text styles</p>
+     <pre>*This text will be italic*
+_This will also be italic_
+**This text will be bold**
+__This will also be bold__
+
+*You **can** combine them*
+</pre>
+    </div>
+    <div class="col">
+      <h3>Lists</h3>
+      <p>Unordered</p>
+      <pre>* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b</pre>
+     <p>Ordered</p>
+     <pre>1. Item 1
+2. Item 2
+3. Item 3
+   * Item 3a
+   * Item 3b</pre>
+    </div>
+    <div class="col">
+      <h3>Miscellaneous</h3>
+      <p>Images</p>
+      <pre>![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
+</pre>
+     <p>Links</p>
+     <pre>http://github.com - automatic!
+[GitHub](http://github.com)</pre>
+<p>Blockquotes</p>
+     <pre>As Kanye West said:
+&gt; We're living the future so
+&gt; the present is our past.
+</pre>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <h3>Code Examples in Markdown</h3>
+  <div class="col">
+      <p>Syntax highlighting with <a href="#" title="GitHub Flavored Markdown">GFM</a></p>
+      <pre>```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```</pre>
+    </div>
+    <div class="col">
+      <p>Or, indent your code 4 spaces</p>
+      <pre>Here is a Python code example
+without syntax highlighting:
+
+    def foo:
+      if not bar:
+        return true</pre>
+    </div>
+    <div class="col">
+      <p>Inline code for comments</p>
+      <pre>I think you should use an
+`&lt;addr&gt;` element here instead.</pre>
+    </div>
+  </div>
+
+  </div>
+
+    
+
+    <!--[if IE 8]>
+    <script type="text/javascript" charset="utf-8">
+      $(document.body).addClass("ie8")
+    </script>
+    <![endif]-->
+
+    <!--[if IE 7]>
+    <script type="text/javascript" charset="utf-8">
+      $(document.body).addClass("ie7")
+    </script>
+    <![endif]-->
+
+    
+    <script type="text/javascript"></script>
+    
+    <script>(function(){var d=document;var e=d.createElement("script");e.async=true;e.src="https://d1ros97qkrwjf5.cloudfront.net/10/eum/rum.js	";var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(e,s);})();NREUMQ.push(["nrf2","beacon-3.newrelic.com","2f94e4d8c2",64799,"dw1bEBZcX1RWRhoFCVkPXBBLQFtXRA==",0,361,new Date().getTime()])</script>
+  
+
+    <div id="facebox" style="display:none;">       <div class="popup">         <div class="content">         </div>         <a href="#" class="close"><img src="/static/images/closelabel.png" class="close_image" title="close"></a>       </div>     </div></body></html>
