@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block body %}
+ <ul class="js-hard-tabs sidetabs">
+    <li><a href="#" class="selected" data-container-id="recieve_bucket">Ирсэн мессеж</a></li> 
+    <li><a href="#" class="" data-container-id="sent_bucket">Илгээсэн мессеж</a></li> 
+</ul>
+<div id="sent_bucket" class="tab-content">
+    <h3>Илгээсэн мессеж</h3>
+    <form action="" method="POST"> {% csrf_token %}
+        <input type="submit" value="mark as read" />
+        <table class="upgrades"> 
+            <tr> 
+                <th></th>
+                <th>Утасны дугаар</th>    
+                <th>Мессеж</th>
+                <th>Ирсэн огноо</th>
+            </tr> 
+            {% for inbox in outboxes %}
+                <tr data-name="medium" data-cost="22" data-repos="20" data-collab="10" data-space="2.4"> 
+                    {% ifequal inbox.message.unread 1 %}
+                        <td><input type="checkbox" name="message" value="{{inbox.message.id}}" /></td>
+                    {% else %}
+                        <td><input type="checkbox" name="message" value="{{inbox.message.id}}" DISABLED /></td>
+                    {% endifequal %}
+                    <td class="name">{{inbox.message.phone}}</td> 
+                    <td class="num">{{ inbox.message.content }}</td> 
+                    <td class="num">{{ inbox.message.ognoo }}</td> 
+                </tr> 
+            {% endfor %}
+        </table> 
+    </form>
+</div>
+<div id="recieve_bucket" class="tab-content">
+    <h3>Ирсэн мессеж</h3>
+    <form action="" method="POST"> {% csrf_token %}
+        <input type="submit" value="mark as read" />
+        <table class="upgrades"> 
+            <tr> 
+                <th></th>
+                <th>Утасны дугаар</th>    
+                <th>Мессеж</th>
+                <th>Ирсэн огноо</th>
+            </tr> 
+            {% for inbox in inboxes %}
+                <tr data-name="medium" data-cost="22" data-repos="20" data-collab="10" data-space="2.4"> 
+                    {% ifequal inbox.message.unread 1 %}
+                        <td><input type="checkbox" name="message" value="{{inbox.message.id}}" /></td>
+                    {% else %}
+                        <td><input type="checkbox" name="message" value="{{inbox.message.id}}" DISABLED /></td>
+                    {% endifequal %}
+                    <td class="name">{{inbox.message.phone}}</td> 
+                    <td class="num">{{ inbox.message.content }}</td> 
+                    <td class="num">{{ inbox.message.ognoo }}</td> 
+                </tr> 
+            {% endfor %}
+        </table> 
+    </form>
+</div>
+{% endblock %}

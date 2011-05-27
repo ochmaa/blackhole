@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<ul class="js-hard-tabs sidetabs">
+    <li><a href="#" class="" data-container-id="profile_bucket">Миний профайл</a></li>
+    <li><a href="#" class="" data-container-id="keys_bucket">Түлхүүрнүүд</a></li>
+    <li><a href="#" class="" data-container-id="rules_bucket">Дүрмүүд</a></li>
+    <li><a href="#" class="" data-container-id="message_bucket">Мессеж илгээх</a></li>
+</ul>
+<div id="profile_bucket">
+    hahaha
+</div>
+<div id="keys_bucket">
+    keys
+</div>
+<div id="rules_bucket">
+    <div class="columns typical">
+        <div class="column main">
+            <div class="fieldgroup">
+                <div class="fields">
+                    <ul class="fieldpills usernames user_emails">
+                        {% for rule in user.get_profile.rules %}
+
+                        
+                        <li class="email">
+                            <span class="address">{{rule.keyword}}</span><a href="{% url delete-rule rule.id %}"  class="delete_email remove action">(delete)</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <p class="addlink" id="add_email_action"><a href="#">Add another rule</a></p>
+                    <div class="add-pill-form add-emails-form" id="add_email_form_wrap" style="display:none;">
+                        <form action="{% url add-rule %}" method="post"> 
+                            <div style="margin:0;padding:0">
+                                {% csrf_token %}
+                            </div>
+                            <dl class="form"> 
+                                <dt><label>Дүрмийн түлхүүр үг</label></dt> 
+                                <dd><input id="public_key_title" name="rule" size="30" type="text" /></dd> 
+                            </dl> 
+                            <dl class="form"> 
+                                <dt><label>Буцаах URL</label></dt> 
+                                <dd><textarea class="key_value" cols="40" id="public_key_key" name="redirecturl" rows="20"></textarea></dd> 
+                            </dl> 
+                            <div class="form-actions">
+                                <button type="submit" class="minibuttoni"><span>Add rule</span></button>
+                                or <a href="#" id="cancel_add_email" class="action">cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="rule"></div>
+                    <p class="extra">Дүрэм дээр нэмж өгсөн үг ирсэн мессежний эхний үсгэнд орсон байвал тэр мессежийг танд хамаатай гэж үзэх болно.</p>
+                </div>
+            </div>
+        </div><!-- column main-->
+        <div class="sidebar">
+            <p class="explain">Та өөрийн дүрмийг нэмж өгснөөр танд хамааралтай мессежийг ялгахад туслах бөгөөд та дүрмээ оруулахдаа
+                мессеж ирснийг буцаан мэдэгдэх url-аа зааж өгөх хэрэгтэй. Ингэснээр таны програм руу мессеж ирснийг мэдэгдэх болно.
+            </p>
+        </div>
+    </div>
+</div>
+<div id="message_bucket">
+    <div class="columns typical"> 
+        <div class="column main"> 
+            <div class="fieldgroup"> 
+                <form action="{% url message-send %}" class="edit_user" id="edit_user_176678" method="post">
+                    <div style="margin:0;padding:0"><input name="_method" type="hidden" value="put" />
+                        {% csrf_token %}
+                    </div> 
+                    <div class="fields"> 
+                        <dl class="form"> 
+                            <dt>
+                                <label>Утасны дугаар</label>
+
+                            </dt>
+                            <dd>
+                                <input type="text" name="phone" />
+                            </dd>
+                            <dt>
+                                <label>Мессеж</label> 
+                            </dt> 
+                            <dd> 
+                                <textarea cols="40" id="user_profile_bio" name="content" rows="20"></textarea> 
+                            </dd> 
+                        </dl> 
+                        <div class="rule"></div> 
+                        <div class="form-actions"> 
+                            <button type="submit" class="classy"><span>Илгээх</span></button> 
+                        </div> 
+                    </div> 
+                </form> 
+            </div> 
+        </div><!-- /.column.main --> 
+        <div class="column sidebar"> 
+            <p class="explain"><strong>Та мессеж явуулж болно!</strong>Мессеж явуулахдаа утасны дугааруудыг таслалаар зааглан оруулж болно.</p> 
+        </div><!-- /.column.sidebar --> 
+    </div><!-- /.columns.typical --> 
+</div>
+{% endblock %}

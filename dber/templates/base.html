@@ -2,9 +2,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Your Account - GitHub</title>
+        <title>Blackhole</title>
+        {% block header %}
+        {% endblock %}
         <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
-
+<script>var NREUMQ=[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script> 
         <link href="/static/css/bundle_github.css" media="screen" rel="stylesheet" type="text/css">
         <script type="text/javascript">
           if (typeof console == "undefined" || typeof console.log == "undefined")
@@ -17,7 +19,7 @@
           var github_user = 'user:{{request.user.user_name}}'
         </script>
         <script src="/static/js/jquery-1.4.2.min.js" type="text/javascript"></script>
-        <script src="/statis/js/bundle_github.js" type="text/javascript"></script>
+        <script src="/static/js/bundle_github.js" type="text/javascript"></script>
         <script type="text/javascript" charset="utf-8">
           GitHub.spy({
             repo: ""
@@ -27,7 +29,7 @@
     <body class="logged_in page-account  linux env-production usingMouse">
         <div class="" id="main">
             <div id="header" class="true">
-                <a class="logo boring" href="#">
+                <a class="logo boring" href="{% url home-page %}">
                     <img alt="github" class="default" src="/static/images/logov3.png">
                     <!--[if (gt IE 8)|!(IE)]><!-->
                     <img alt="github" class="hover" src="/static/images/logov3-hover.png">
@@ -44,7 +46,7 @@
                             <a href="#" class="unread_count ">{{user.get_profile.remcash}}</a>
                         </li>
                         <li><a href="#">Account Settings</a></li>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a href="{% url logout-page %}">Log Out</a></li>
                     </ul>
                 </div><!-- /.userbox -->
                 <div class="topsearch"> 
@@ -65,11 +67,11 @@
                         <li><a href="#" class="minibutton"><span>View Your Public Profile→</span></a></li>
                     </ul>
                     <ul class="tabs">
-                        <li><a href="#" class="selected">Home</a></li>
-                        <li><a href="#">Notifications</a></li>
-                        <li><a href="#">Plans &amp; Billing</a></li>
-                        <li><a href="#">Statistics</a></li>
-                        <li><a href="#" highlight="organizations">Reports</a></li> 
+                        <li><a href="{% url home-page %}" class="selected">Home</a></li>
+                        <li><a href="{% url notifications-page %}">Notifications</a></li>
+                        <li><a href="{% url plan-page %}">Plans &amp; Billing</a></li>
+                        <li><a href="{% url statistics-page %}">Statistics</a></li>
+                        <li><a href="{% url reports-page %}" highlight="organizations">Reports</a></li> 
                     </ul>
                 </div><!-- /.pagehead -->
                 <div class="flash-messages"></div>
@@ -78,151 +80,36 @@
                         <dl>
                             <dt class="numbers"><em>{{ user.get_profile.plan.name}}</em></dt>
                             <dt class="label">{{ user.get_profile.plan.name}} </dt>
-                            <dd><a href="#" class="minibutton "><span>Change plan</span></a></dd>
+                            <dd><a href="{% url plan-page %}" class="minibutton "><span>Change plan</span></a></dd>
                         </dl>
                     </li>
                     <li class="usage limit-repos">
                         <dl class="over">
                             <dt class="numbers"><em>{{user.get_profile.UNR}}</em>/{{user.get_profile.RM}}</dt>
                             <dt class="label">Recieved Messages</dt>
-                            <dd class="bar"><span style="width:100.0%">100.0%</span></dd>
+                            <dd class="bar"><span style="width:{{user.get_profile.RMP}}%">{{user.get_profile.RMP}}%</span></dd>
                         </dl>
                     </li>
                     <li class="usage limit-collabs">
                         <dl class="over">
                             <dt class="numbers"><em>{{ user.get_profile.USM}}</em>/{{ user.get_profile.SM}}</dt>
                             <dt class="label">Sent Messages</dt>
-                            <dd class="bar"><span style="width:100.0%">100.0%</span></dd>
+                            <dd class="bar"><span style="width:{{user.get_profile.SMP}}%">{{user.get_profile.SMP}}%</span></dd>
                         </dl>
                     </li>
                     <li class="usage limit-space">
                         <dl class="below">
                             <dt class="numbers"><em>{{user.get_profile.remcash}}<span class="suffix">₮</span></em>/{{user.get_profile.plan.tarif}}<span class="suffix">₮</span></dt>
                             <dt class="label">таны данс</dt>
-                            <dd class="bar"><span style="width:2.67410278320312%">2.67410278320312%</span></dd>
+                            <dd class="bar"><span style="width:{{user.get_profile.RCP}}%">{{ user.get_profile.RCP }}%</span></dd>
                         </dl>
                     </li>
                 </ul>
                 <div class="clear"></div>
                 <div class="htabs">
-                <ul class="js-hard-tabs sidetabs">
-                    <li><a href="#" class="" data-container-id="profile_bucket">My Profile</a></li>
-                    <li><a href="#" class="selected" data-container-id="admin_bucket">Phone numbers</a></li>
-                    <li><a href="#" class="" data-container-id="email_bucket">Keys</a></li>
-                    <li><a href="#" class="" data-container-id="ssh_bucket">Rules</a></li>
-                    <li><a href="#" class="" data-container-id="job_bucket">Redirect url</a></li>      
-                </ul>
-                <div id="job_bucket" class="tab-content" style="display: none; ">
-                    <div class="columns typical">
-                        <div class="column main">
-                            <div class="fieldgroup">
-                                <form action="https://github.com/users/mongolzaluu" class="edit_user" id="edit_user_790536" method="post">
-                                    <div style="margin:0;padding:0">
-                                        <input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="ea08705969868866d2014801718bc82406a3ee4e">
-                                    </div>
-                                    <div class="fields">
-                                        <dl class="form">
-                                            <dt><label>Professional Bio</label> <span style="font-weight:normal; font-size:0.8em; float:right;">Parsed with <a href="#">GitHub Flavored Markdown</a></span></dt>
-                                            <dd>
-                                                <textarea cols="40" id="user_profile_bio" name="user[profile_bio]" rows="20"></textarea>
-                                            </dd>
-                                        </dl>
-                                        <p class="checkbox">
-                                            <input id="user_profile_hireable" name="user[profile_hireable]" type="checkbox" value="1"><input name="user[profile_hireable]" type="hidden" value="0">
-                                            <label for="user_profile_hireable">Available for hire</label>
-                                        </p>
-                                        <div class="rule"></div>
-                                        <div class="form-actions">
-                                            <button type="button" class="classy js-preview-job-profile"><span>Preview</span></button>
-                                            <button type="submit" class="classy"><span>Update Job Profile</span></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div><!-- /.column.main -->
-                        <div class="column sidebar">
-                            <p class="explain"><strong>Looking for work? Let GitHub help!</strong> Fill out your profile, paste in your resume below, check the for hire box and we'll try and hook you up with a new job.</p>
-                        </div><!-- /.column.sidebar -->
-                    </div><!-- /.columns.typical -->
-                </div><!-- /#job_bucket -->
-                <div id="email_bucket" class="tab-content" style="display: none; ">
-                    <div class="columns typical">
-                        <div class="column main">
-                            <div class="fieldgroup">
-                                <div class="fields">
-                                    <ul class="fieldpills usernames user_emails">
-                                        <li class="email">
-                                            <img src="/static/images/62bd07ef6619f5fafef91e6c2fddbaf3" alt="" width="20" height="20">
-                                            <span class="address">ezerdenezul@yahoo.com</span> 
-                                            <a href="#" class="delete_email remove action">(delete)</a>
-                                        </li>
-                                    </ul>
-                                    <p class="addlink" id="add_email_action"><a href="#">Add another email address</a></p>
-                                    <div class="add-pill-form add-emails-form" id="add_email_form_wrap" style="display:none;">
-                                        <form action="https://github.com/users/mongolzaluu/add_email" id="add_email_form" method="post">
-                                            <div style="margin:0;padding:0">
-                                                <input name="authenticity_token" type="hidden" value="ea08705969868866d2014801718bc82406a3ee4e">
-                                            </div>
-                                            <input name="email" type="text" class="textfield">
-                                            <button type="submit" class="minibutton">
-                                                <span>Add</span>
-                                            </button> or <a href="#" class="action" id="cancel_add_email">cancel</a>
-                                        </form>
-                                        <!-- cancel hides form and shows link; add insert email and keep form available for rapid fire additions -->
-                                        <p class="error_box" style="display:none;">That email address is already in use.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- /.column.main -->
-                        <div class="column sidebar">
-                            <p class="explain">We use these to identify your commits on GitHub.
-                            <a href="#" target="_blank">Learn how to setup Git with your email address.</a></p>
-                            <p class="explain">Avatars come from <a href="#" target="_blank">gravatar.com</a> and must be G rated.</p>
-                        </div><!-- /.column.sidebar -->
-                    </div><!-- /.columns.typical -->
-                </div><!-- /#email_bucket -->
-                <div id="ssh_bucket" class="tab-content" style="display: none; ">
-                    <div class="columns typical">
-                        <div class="column main">
-                            <div class="fieldgroup">
-                                <div class="fields">
-                                    <ul class="fieldpills public_keys">
-                                        <li id="key_804876" class="key">my
-                                            <a href="#" class="edit_key_action">(edit)</a>
-                                            <a href="#" class="delete_key remove action">(delete)</a>
-                                        </li>
-                                    </ul>
-                                    <p id="add_key_action" class="addlink" style="display: none; "><a href="https://github.com/account/admin#">Add another public key</a></p>
-                                    <div id="new_key_form_wrap" class="add-pill-form add-keys-form" style="">
-                                        <form action="#" class="key_editing" id="new_key" method="post">
-                                            <div style="margin:0;padding:0">
-                                                <input name="authenticity_token" type="hidden" value="ea08705969868866d2014801718bc82406a3ee4e">
-                                            </div>
-                                            <dl class="form">
-                                                <dt><label>Title</label></dt>
-                                                <dd><input id="public_key_title" name="public_key[title]" size="30" type="text"></dd>
-                                            </dl>
-                                            <dl class="form">
-                                                <dt><label>Key</label></dt>
-                                                <dd><textarea class="key_value" cols="40" id="public_key_key" name="public_key[key]" rows="20"></textarea></dd>
-                                            </dl>
-                                            <div class="form-actions">
-                                                <button type="submit" class="minibutton"><span>Add key</span></button>
-                                                or <a href="#" id="cancel_add_key" class="action">cancel</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="rule"></div>
-                                    <p class="extra">Our RSA fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48</p>
-                                </div>
-                            </div>
-                        </div><!-- /.column.main -->
-                        <div class="sidebar">
-                            <p class="explain">We use these to give you access to your git repositories.
-                            <a target="_blank" href="#">Need help with public keys?</a></p>
-                        </div>
-                    </div><!-- /.columns.typical -->
-                </div><!-- /#ssh_bucket -->
+                {% block body %}
+
+                {% endblock %}
             </div>
         </div>
     </div>

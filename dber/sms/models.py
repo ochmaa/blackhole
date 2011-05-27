@@ -18,18 +18,30 @@ class AppUser(models.Model):
     remcash = models.IntegerField(default=15000)
     inbox_count = models.IntegerField(default=1000)
 
+    def rules(self):
+        return self.rule_set.all()
+        
     def RM(self):
         return self.userinbox_set.count()
         
     def UNR(self):
         return self.userinbox_set.filter(message__unread=True).count()
 
+    def RMP(self):
+        return float(self.UNR())/float(self.RM())*100
+
     def SM(self):
         return self.useroutbox_set.count()
 
     def USM(self):
         return self.useroutbox_set.filter(message__unread=True).count()
-        
+
+    def SMP(self):
+        return float(self.USM())/float(self.SM())*100 
+
+    def RCP(self):    
+        return float(self.remcash)/float(self.plan.tarif)*100 
+
     def __unicode__(self):
         return self.user.username
 

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+ <ul class="inline-tabs sidetabs">
+    <li><a href="#plan_bucket">Change your plan</a></li> 
+    <li><a href="#receipts_bucket" ajax="/account/receipts">Payment History</a></li> 
+</ul>
+<div id="receipts_bucket" class="tab-content"></div>
+<div id="plan_bucket" class="tab-content">
+    <div class="payment-type card">
+        <h3> No credit card on file.</h3>
+    </div>
+    <table class="upgrades"> 
+        <tr> 
+            <th>Plan</th>    
+            <th class="num"><span class="private-icon" title="Private">Private</span> Тариф</th> 
+            <th class="num"><span class="private-icon" title="Private">Private</span> Inbox-ны хэмжээ</th> 
+            <th></th> 
+        </tr> 
+        {% for plan in plan_list %}
+            {% ifequal plan user.get_profile.plan %}
+                <tr data-name="medium" data-cost="22" data-repos="20" data-collab="10" data-space="2.4"> 
+                    <td class="name">{{plan.name}}</td> 
+                    <td class="num">{{ plan.tarif}}</td> 
+                    {% ifequal plan.inbox_count -1 %}
+                        <td class="num">Хязгааргүй</td> 
+                    {% else %}
+                        <td class="num">{{ plan.inbox_count }}</td> 
+                    {% endifequal %}
+                    <td class="action">Your Plan</td> 
+                </tr> 
+            {% else %}
+                <tr data-name="medium" data-cost="22" data-repos="20" data-collab="10" data-space="2.4"> 
+                    <td class="name">{{plan.name}}</td> 
+                    <td class="num">{{ plan.tarif}}</td> 
+                    {% ifequal plan.inbox_count -1 %}
+                        <td class="num">Хязгааргүй</td> 
+                    {% else %}
+                        <td class="num">{{ plan.inbox_count }}</td> 
+                    {% endifequal %}
+                    <td class="action"> 
+                        <a href="#credit_card_form" rel="facebox" class="minibutton choose_plan"><span>Upgrade</span></a> 
+                    </td> 
+                </tr> 
+            {% endifequal %}
+        {% endfor %}
+    </table> 
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load chart_tools %}
+{% block header %}
+{% chart %}
+    {% for chart in chart_list %}
+        {% prepare_chart chart %}
+    {% endfor %}
+{% endchart %}
+{% endblock %}
+{% block body %}
+    {% for chart in chart_list %}
+        {% draw_chart chart %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% if chart.data.rows and chart.data.columns %}
+google.setOnLoadCallback({{ chart.id }});
+function {{ chart.id }}() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string');
+    {% for column in chart.data.columns %}
+        data.addColumn('number', '{{ column.name }}');
+    {% endfor %}
+    {% for row in chart.data.rows %} 
+        data.addRow(["{{ row.date }}", {% for s in row.values %}{{ s }},{% endfor %}]) 
+    {% endfor %}
+
+    var chart = new google.visualization.LineChart(document.getElementById('{{ chart.id }}'));
+    chart_options = {width: 900,
+                    height: 300,
+                    title: '{{ chart.title }}',
+                    'hAxis': {'title': 'Days',
+                              },
+                    'vAxis': {'title': '{{ chart.vAxis.title }}',
+                            'curveType': '{{ chart.curveType }}'
+                            }
+                    };
+    chart.draw(data, chart_options);
+};
+{% endif %}
