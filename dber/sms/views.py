@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 from django.http import *
 from dber.sms.models import *
 from django.shortcuts import render_to_response
@@ -6,10 +7,11 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
+import re
+import datetime
 
 @login_required()
 def home(request):
-    print request.POST
     return render_to_response('home.html',{
         'plan_list': Plan.objects.all()
     },context_instance=RequestContext(request))
@@ -24,6 +26,8 @@ def plan(request):
 def statistics(request):
     chart_list = []
     chart_list.append(example_chart())
+    chart_list.append(weekly_sent_chart(request.user.get_profile()))
+    chart_list.append(weekly_recieve_chart(request.user.get_profile()))
     return render_to_response('sms/statistics.html', {
         'chart_list': chart_list,
         }, context_instance=RequestContext(request))
@@ -39,10 +43,9 @@ def notifications(request):
     inboxes = a.userinbox_set.all()
     outboxes = a.useroutbox_set.all()
     if request.method=='POST':
-        print request.POST
-        messages_id =request.POST['message']
-        print messages_id
-        for message_id in messages_id:
+        strids = str(request.POST)
+        numbers = re.findall('[0-9]{1,}',strids)
+        for message_id in numbers:
             msgobj = Message.objects.get(pk=message_id)
             msgobj.unread=False
             msgobj.save()
@@ -78,9 +81,56 @@ def inbox(request):
     pass
 
 def outbox(request):
-    print request.GET['to']
-    print request.GET['content']
     return HttpResponse()
+
+
+def weekly_sent_chart(user):
+    results = []
+    days =[ x for x in range(1,8)]
+    weekdic = ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    now = datetime.datetime.now()  
+    checkdate = now - datetime.timedelta(days=now.weekday())
+    count = 0
+    for day in days:
+        count = user.useroutbox_set.filter(message__ognoo__year=now.year,message__ognoo__month=now.month,message__ognoo__day=checkdate.day).count()
+        checkdate = checkdate + datetime.timedelta(days=1)
+        results.append({'date':weekdic[day-1],'values':[count]})
+        count = 0
+    chart = {
+            'id': 'week_sent_chart',
+            'title': 'Энэ 7 хоногийн илгээсэн мессежны график үзүүлэлт',
+            'data': {
+                'columns': [{'name':'Мессежний тоо'}],
+                'rows': results,
+            },
+            'vAxis': {'title': 'Count'},
+            'curveType': 'none'
+        }
+    return chart
+
+def weekly_recieve_chart(user):
+    results = []
+    days =[ x for x in range(1,8)]
+    weekdic = ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    now = datetime.datetime.now()  
+    checkdate = now - datetime.timedelta(days=now.weekday())
+    count = 0
+    for day in days:
+        count = user.userinbox_set.filter(message__ognoo__year=now.year,message__ognoo__month=now.month,message__ognoo__day=checkdate.day).count()
+        checkdate = checkdate + datetime.timedelta(days=1)
+        results.append({'date':weekdic[day-1],'values':[count]})
+        count = 0
+    chart = {
+            'id': 'week_recieve_chart',
+            'title': 'Энэ 7 хоногийн илгээсэн мессежны график үзүүлэлт',
+            'data': {
+                'columns': [{'name':'Мессежний тоо'}],
+                'rows': results,
+            },
+            'vAxis': {'title': 'Count'},
+            'curveType': 'none'
+        }
+    return chart
 
 def example_chart():
     results = []

@@ -28,6 +28,8 @@ class AppUser(models.Model):
         return self.userinbox_set.filter(message__unread=True).count()
 
     def RMP(self):
+        if self.RM()==0:
+            return 0
         return float(self.UNR())/float(self.RM())*100
 
     def SM(self):
@@ -37,9 +39,11 @@ class AppUser(models.Model):
         return self.useroutbox_set.filter(message__unread=True).count()
 
     def SMP(self):
+        if self.SM()==0:
+            return 0
         return float(self.USM())/float(self.SM())*100 
 
-    def RCP(self):    
+    def RCP(self):   
         return float(self.remcash)/float(self.plan.tarif)*100 
 
     def __unicode__(self):
@@ -92,6 +96,9 @@ class Message(models.Model):
     content = models.CharField(max_length=150)
     ognoo = models.DateTimeField(auto_now=True)
     unread = models.BooleanField(default=True)
+
+    class Meta:
+        ordering= ['ognoo','unread']
     
 class UserInbox(models.Model):
     user = models.ForeignKey(AppUser)
